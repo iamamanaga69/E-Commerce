@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flickers Place - Unique Mobile Covers & Clothes</title>
+    <!-- Use a modern, elegant font for a unique feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Dark blue background */
+            color: #E2E8F0; /* Light gray text */
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom right, #112c5b, #1b3d75); /* Dark blue gradient */
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+        }
+        .text-neon-pink {
+            color: #f87171; /* A neon pink-red */
+        }
+        .bg-neon-pink {
+            background-color: #f87171;
+        }
+        .hover\:text-neon-pink:hover {
+            color: #f87171;
+        }
+        .hover\:bg-neon-pink:hover {
+            background-color: #f87171;
+        }
+        /* Custom styles for professional polish and mobile responsiveness */
+        @media (max-width: 768px) {
+            .mobile-nav-menu {
+                display: none;
+            }
+            .mobile-nav-menu.active {
+                display: block;
+            }
+        }
+        /* Style for the interactive canvas section */
+        #interactive-canvas-section {
+            position: relative;
+            background-color: #0f172a;
+            overflow: hidden;
+        }
+        #interactive-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+        #interactive-text {
+            position: relative;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-gray-900 shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand Name & Logo -->
+            <a href="#" class="flex items-center space-x-2">
+                <!-- Custom SVG Logo -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-neon-pink" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.016 2.016c.365-.365.955-.365 1.32 0s.365.955 0 1.32L5.8 11.054c-.365.365-.365.955 0 1.32.365.365.955.365 1.32 0l7.536-7.536c.365-.365.955-.365 1.32 0s.365.955 0 1.32L8.436 15.197c-.365.365-.365.955 0 1.32.365.365.955.365 1.32 0l8.777-8.777c.365-.365.955-.365 1.32 0s.365.955 0 1.32L11.08 19.141c-.365.365-.955.365-1.32 0-.365-.365-.365-.955 0-1.32l8.777-8.777c.365-.365.955-.365 1.32 0s.365.955 0 1.32l-9.15 9.15c-.365.365-.955.365-1.32 0s-.365-.955 0-1.32l7.536-7.536c.365-.365.955-.365 1.32 0s.365.955 0 1.32L5.8 11.054c-.365.365-.365.955 0 1.32.365.365.955.365 1.32 0L12.016 2.016z"/>
+                </svg>
+                <span class="text-3xl font-bold tracking-tight text-gray-100">Flickers Place</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#mobile-covers" class="text-gray-400 hover:text-neon-pink transition-colors duration-300">Mobile Covers</a>
+                <a href="#clothes" class="text-gray-400 hover:text-neon-pink transition-colors duration-300">Clothes</a>
+                <a href="#" class="text-gray-400 hover:text-neon-pink transition-colors duration-300">About Us</a>
+                <a href="#" class="text-gray-400 hover:text-neon-pink transition-colors duration-300">Contact</a>
+                <div class="h-6 w-px bg-gray-700"></div>
+                <!-- Search Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 hover:text-neon-pink cursor-pointer transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <!-- Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 hover:text-neon-pink cursor-pointer transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.706.707 1.706H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-neon-pink">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="mobile-nav-menu md:hidden bg-gray-900 shadow-lg py-4">
+            <a href="#mobile-covers" class="block px-6 py-2 text-gray-400 hover:bg-gray-800 transition-colors">Mobile Covers</a>
+            <a href="#clothes" class="block px-6 py-2 text-gray-400 hover:bg-gray-800 transition-colors">Clothes</a>
+            <a href="#" class="block px-6 py-2 text-gray-400 hover:bg-gray-800 transition-colors">About Us</a>
+            <a href="#" class="block px-6 py-2 text-gray-400 hover:bg-gray-800 transition-colors">Contact</a>
+            <div class="flex justify-center mt-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2 text-gray-500 hover:text-neon-pink cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2 text-gray-500 hover:text-neon-pink cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.182 1.706.707 1.706H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-gray-950">
+        <!-- Hero Section: Updated with a more direct CTA -->
+        <section class="hero-bg bg-cover bg-center h-[500px] md:h-[600px] flex items-center justify-center text-center text-white p-6 rounded-b-3xl shadow-lg">
+            <div class="bg-black bg-opacity-40 p-8 rounded-xl max-w-2xl mx-auto backdrop-blur-sm">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight">
+                    New Collection. Your Vibe.
+                </h1>
+                <p class="text-xl md:text-2xl font-light mb-8">
+                    Discover the latest drops in mobile covers and fashion.
+                </p>
+                <a href="#featured-products" class="inline-block bg-neon-pink text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 hover:bg-red-500 hover:scale-105">
+                    Shop Now
+                </a>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section id="featured-products" class="py-16 md:py-24 px-6">
+            <div class="container mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-100">
+                    Top Picks Just For You
+                </h2>
+
+                <!-- Mobile Covers Section -->
+                <div id="mobile-covers" class="mb-20">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="text-2xl md:text-3xl font-semibold text-gray-100">
+                            Mobile Covers
+                        </h3>
+                        <a href="#" class="text-neon-pink font-semibold hover:underline">
+                            View All
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <!-- Product Card 1 -->
+                        <div class="bg-gray-800 p-4 rounded-xl card-shadow transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                            <img src="https://placehold.co/600x600/1a202c/6b46c1?text=Phone+Case" alt="Product Image" class="w-full h-auto rounded-lg mb-4">
+                            <h4 class="font-medium text-lg text-gray-100 truncate">Sleek Black Case</h4>
+                            <p class="text-gray-400 mt-1">$19.99</p>
+                        </div>
+                        <!-- Product Card 2 -->
+                        <div class="bg-gray-800 p-4 rounded-xl card-shadow transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                            <img src="https://placehold.co/600x600/1a202c/6b46c1?text=Phone+Case" alt="Product Image" class="w-full h-auto rounded-lg mb-4">
+                            <h4 class="font-medium text-lg text-gray-100 truncate">Vibrant Abstract Cover</h4>
+                            <p class="text-gray-400 mt-1">$24.50</p>
+                        </div>
+                        <!-- Product Card 3 -->
+                        <div class="bg-gray-800 p-4 rounded-xl card-shadow transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                            <img src="https://placehold.co/600x600/1a202c/6b46c1?text=Phone+Case" alt="Product Image" class="w-full h-auto rounded-lg mb-4">
+                            <h4 class="font-medium text-lg text-gray-100 truncate">Geometric Crystal Case</h4>
+                            <p class="text-gray-400 mt-1">$29.00</p>
+                        </div>
+                        <!-- Product Card 4 -->
+                        <div class="bg-gray-800 p-4 rounded-xl card-shadow transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                            <img src="https://placehold.co/600x600/1a202c/6b46c1?text=Phone+Case" alt="Product Image" class="w-full h-auto rounded-lg mb-4">
+                            <h4 class="font-medium text-lg text-gray-100 truncate">Frosted Grip Cover</h4>
+                            <p class="text-gray-400 mt-1">$17.75</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clothes Section -->
+                <div id="clothes">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="text-2xl md:text-3xl font-semibold text-gray-100">
+                            Clothes
+                        </h3>
+                        <a href="#" class="text-neon-pink font-semibold hover:underline">
+                            View All
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <!-- Product Card 1 -->
+                        <div class="bg-gray-800 p-4 rounded-xl card-shadow transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                            <img src="https://placehold.co/600x600/1a202c/6b46c1?text=T-Shirt" alt="Product Image" class="w-full h-auto rounded-lg mb-4">
+                            <h4 class="font-medium text-lg text-gray-100 truncate">Minimalist T-Shirt</h4>
+                            <p class="text-gray-400 mt-1">$35.00</p>
+                        </div>
+                        <!-- Product Card 2 -->
+                        <div class="bg-gray-800 p-4 rounded-xl card-shadow transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                            <img src="https://placehold.co/600x600/1a202c/6b46c1?text=Hoodie" alt="Product Image" class="w-full h-auto rounded-lg mb-4">
+                            <h4 class="font-medium text-lg text-gray-100 truncate">Urban Street Hoodie</h4>
+                            <p class="text-gray-400 mt-1">$65.00</p>
+                        </div>
+                        <!-- Product Card 3 -->
+                        <div class="bg-gray-800 p-4 rounded-xl card-shadow transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                            <img src="https://placehold.co/600x600/1a202c/6b46c1?text=Jeans" alt="Product Image" class="w-full h-auto rounded-lg mb-4">
+                            <h4 class="font-medium text-lg text-gray-100 truncate">Slim Fit Jeans</h4>
+                            <p class="text-gray-400 mt-1">$89.99</p>
+                        </div>
+                        <!-- Product Card 4 -->
+                        <div class="bg-gray-800 p-4 rounded-xl card-shadow transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                            <img src="https://placehold.co/600x600/1a202c/6b46c1?text=Jacket" alt="Product Image" class="w-full h-auto rounded-lg mb-4">
+                            <h4 class="font-medium text-lg text-gray-100 truncate">Vintage Denim Jacket</h4>
+                            <p class="text-gray-400 mt-1">$120.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New "Shop the Look" Section -->
+        <section class="py-16 md:py-24 px-6 bg-gray-900">
+            <div class="container mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-100">
+                    Shop the Look
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Lookbook Card 1 -->
+                    <div class="relative group rounded-xl overflow-hidden card-shadow cursor-pointer">
+                        <img src="https://placehold.co/800x600/1a202c/6b46c1?text=Look+1" alt="Look 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition-all duration-300 group-hover:bg-opacity-70">
+                            <div class="transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                                <h4 class="text-2xl font-semibold text-white">The Urban Vibe</h4>
+                                <p class="text-gray-300 mt-2">Mobile Cover & Hoodie</p>
+                                <a href="#" class="mt-4 inline-block text-neon-pink font-semibold hover:underline">Shop Look</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lookbook Card 2 -->
+                    <div class="relative group rounded-xl overflow-hidden card-shadow cursor-pointer">
+                        <img src="https://placehold.co/800x600/1a202c/6b46c1?text=Look+2" alt="Look 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition-all duration-300 group-hover:bg-opacity-70">
+                            <div class="transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                                <h4 class="text-2xl font-semibold text-white">Minimalist Style</h4>
+                                <p class="text-gray-300 mt-2">Jeans & T-Shirt</p>
+                                <a href="#" class="mt-4 inline-block text-neon-pink font-semibold hover:underline">Shop Look</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lookbook Card 3 -->
+                    <div class="relative group rounded-xl overflow-hidden card-shadow cursor-pointer">
+                        <img src="https://placehold.co/800x600/1a202c/6b46c1?text=Look+3" alt="Look 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-end p-6 transition-all duration-300 group-hover:bg-opacity-70">
+                            <div class="transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                                <h4 class="text-2xl font-semibold text-white">The Denim Classic</h4>
+                                <p class="text-gray-300 mt-2">Denim Jacket & Phone Case</p>
+                                <a href="#" class="mt-4 inline-block text-neon-pink font-semibold hover:underline">Shop Look</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Canvas Section -->
+        <section id="interactive-canvas-section" class="py-16 md:py-24 px-6 flex items-center justify-center text-center">
+            <div id="interactive-text" class="container mx-auto max-w-2xl">
+                <h3 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+                    Join the Vibe. Stay in the Loop.
+                </h3>
+                <p class="text-lg md:text-xl font-light text-gray-400 mb-8">
+                    Don't miss out on exclusive drops and our latest collections.
+                </p>
+            </div>
+            <canvas id="interactive-canvas"></canvas>
+        </section>
+
+        <!-- Newsletter & Social CTA -->
+        <section class="bg-gray-900 text-white py-16 px-6">
+            <div class="container mx-auto text-center">
+                <h3 class="text-3xl font-semibold mb-4">Stay in the loop.</h3>
+                <p class="text-gray-400 mb-8">Get the latest updates and exclusive offers delivered to your inbox.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+                    <input type="email" placeholder="Enter your email address" class="w-full md:w-1/3 px-4 py-3 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-neon-pink">
+                    <button class="w-full md:w-auto px-8 py-3 bg-neon-pink text-white font-semibold rounded-full shadow-lg transition-all duration-300 hover:bg-red-500 hover:scale-105">
+                        Subscribe
+                    </button>
+                </div>
+                <div class="mt-8 flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.772 1.691 4.982 4.922.1 1.411.123 1.79.123 5.523s-.023 4.113-.123 5.524c-.21 3.232-1.73 4.776-4.982 4.923-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.772-1.691-4.982-4.923-.1-1.41-.123-1.79-.123-5.524s.023-4.113.123-5.524c.21-3.231 1.73-4.774 4.982-4.921 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.201-6.78 2.623-6.981 6.981-.058 1.281-.072 1.689-.072 4.947s.014 3.668.072 4.948c.201 4.358 2.623 6.78 6.981 6.981 1.28.058 1.689.072 4.947.072s3.668-.014 4.948-.072c4.354-.201 6.782-2.623 6.981-6.981.058-1.28.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.624-6.782-6.981-6.981-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.44-.645 1.44-1.44s-.645-1.44-1.44-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.588-1.333h2.412v-3.996h-3.251c-3.52 0-4.749 2.009-4.749 4.639v2.361z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.181 0-5.405 2.58-5.405 5.772 0 .45.04.887.118 1.31-.005 0-.005 0-.005.002-.005-.002-.01-.002-.015-.004-.007.001-.01.002-.017.004-.002 0-.003 0-.005.002-.008.003-.016.007-.024.01a11.192 11.192 0 01-8.156-4.124c-.004-.007-.007-.015-.01-.022-.002-.003-.005-.007-.007-.01-.002-.002-.003-.005-.005-.007a.048.048 0 01-.003-.004c-.004-.005-.007-.01-.01-.016a.042.042 0 01-.002-.004c-.003-.005-.006-.01-.009-.015a.035.035 0 01-.002-.004c-.004-.005-.007-.008-.01-.012l-.004-.004c-.003-.003-.006-.006-.009-.01l-.004-.004a.03.03 0 01-.002-.003c-.002-.003-.004-.006-.006-.009a.022.022 0 01-.002-.002c-.003-.003-.005-.005-.008-.008-.002-.002-.003-.003-.005-.005a.014.014 0 01-.001-.001l-.004-.004-.003-.003c-.002-.002-.003-.003-.005-.005a.009.009 0 01-.001-.001l-.002-.002-.001-.001c-.002-.002-.002-.002-.002-.002s-.001-.001-.002-.002l-.002-.002a.005.005 0 01-.001-.001c-1.85 3.168-3.905 5.097-6.248 5.418.913.545 1.956.818 3.036.818 3.642 0 6.6-2.958 6.6-6.6 0-.101-.005-.202-.014-.302.946-.685 1.765-1.54 2.417-2.522z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-12 px-6">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Section -->
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-white">Flickers Place</h4>
+                <p class="text-sm">Style that clicks. Fashion that lasts. Discover our unique collection of mobile covers and apparel that lets your personality shine.</p>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-white">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-neon-pink transition-colors">Shop All</a></li>
+                    <li><a href="#" class="hover:text-neon-pink transition-colors">FAQs</a></li>
+                    <li><a href="#" class="hover:text-neon-pink transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-neon-pink transition-colors">Returns & Exchange</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-white">Contact</h4>
+                <p class="text-sm">Email: <a href="mailto:contact@flickersplace.com" class="hover:text-neon-pink transition-colors">contact@flickersplace.com</a></p>
+                <p class="text-sm mt-2">Phone: <a href="tel:+1234567890" class="hover:text-neon-pink transition-colors">+1 (234) 567-890</a></p>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500 text-sm">
+            &copy; 2024 Flickers Place. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu and Interactive Canvas -->
+    <script>
+        // Mobile Menu Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (menuButton) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+
+            // Interactive Canvas Logic
+            const canvas = document.getElementById('interactive-canvas');
+            const ctx = canvas.getContext('2d');
+            let mouse = { x: null, y: null };
+            let particles = [];
+            const particleColors = ['#0891b2', '#f87171', '#2dd4bf']; // cyan, neon pink, teal
+
+            // Set canvas dimensions to match its container
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.offsetWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
+            }
+
+            // Update mouse position on mousemove
+            canvas.addEventListener('mousemove', (event) => {
+                mouse.x = event.offsetX;
+                mouse.y = event.offsetY;
+            });
+
+            // Handle window resize event
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            // Particle class
+            class Particle {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.radius = Math.random() * 2 + 1;
+                    this.velocity = {
+                        x: (Math.random() - 0.5) * 0.5,
+                        y: (Math.random() - 0.5) * 0.5
+                    };
+                    this.color = color;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+                update() {
+                    this.x += this.velocity.x;
+                    this.y += this.velocity.y;
+
+                    // Reverse direction if a particle hits the canvas edges
+                    if (this.x - this.radius < 0 || this.x + this.radius > canvas.width) {
+                        this.velocity.x = -this.velocity.x;
+                    }
+                    if (this.y - this.radius < 0 || this.y + this.radius > canvas.height) {
+                        this.velocity.y = -this.velocity.y;
+                    }
+
+                    this.draw();
+                }
+            }
+
+            // Initialize particles
+            function init() {
+                particles = [];
+                for (let i = 0; i < 150; i++) {
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+                    particles.push(new Particle(x, y, color));
+                }
+            }
+
+            // Connect particles with lines
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a; b < particles.length; b++) {
+                        const dx = particles[a].x - particles[b].x;
+                        const dy = particles[a].y - particles[b].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 120) {
+                            opacityValue = 1 - (distance / 120);
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${opacityValue})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+            
+            // Animate particles
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(particle => {
+                    particle.update();
+                });
+                connect();
+            }
+
+            // Start animation
+            init();
+            animate();
+        });
+    </script>
+</body>
+</html>
