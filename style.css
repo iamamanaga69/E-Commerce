@@ -1,0 +1,83 @@
+/*
+ * Global Styles
+ * ---------------------------------------------
+ * This section defines the core look and feel of the entire website,
+ * including font, background, and default text colors.
+ */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a; /* Dark blue background */
+    color: #E2E8F0; /* Light gray text */
+}
+
+/*
+ * Re-usable Components
+ * ---------------------------------------------
+ * These classes are used across multiple pages for consistent
+ * design elements like the card-shadow and neon colors.
+ */
+.hero-bg {
+    background-image: linear-gradient(to bottom right, #112c5b, #1b3d75); /* Dark blue gradient */
+}
+
+.card-shadow {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+.text-neon-pink {
+    color: #f87171; /* A neon pink-red */
+}
+
+.bg-neon-pink {
+    background-color: #f87171;
+}
+
+.hover\:text-neon-pink:hover {
+    color: #f87171;
+}
+
+.hover\:bg-neon-pink:hover {
+    background-color: #f87171;
+}
+
+/*
+ * Mobile-Specific Styles
+ * ---------------------------------------------
+ * This media query ensures the mobile navigation menu is hidden by default.
+ * The JavaScript will toggle the 'active' class to show it on small screens.
+ */
+@media (max-width: 768px) {
+    .mobile-nav-menu {
+        display: none;
+    }
+    .mobile-nav-menu.active {
+        display: block;
+    }
+}
+
+/*
+ * Interactive Canvas Styles
+ * ---------------------------------------------
+ * These styles ensure the canvas and its text content are positioned correctly
+ * and create a unique, layered visual effect.
+ */
+#interactive-canvas-section {
+    position: relative;
+    background-color: #0f172a;
+    overflow: hidden;
+}
+
+#interactive-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+#interactive-text {
+    position: relative;
+    z-index: 20;
+}
+
